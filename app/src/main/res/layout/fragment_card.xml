@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.MyAdsFragment">
+    tools:context=".Fragment.CardFragment">
 
     <!--TabLayout:My Ads, Favorite Ads-->
   <com.google.android.material.tabs.TabLayout
@@ -11,7 +11,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"/>
 
-    <!--ViewPager2: To show/swipe fragment MyAds_AdsFragment,MyAds_FavFragment-->
+    <!--ViewPager2: To show/swipe fragment CartWishListFragment,CardShopListFragment-->
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:layout_width="match_parent"

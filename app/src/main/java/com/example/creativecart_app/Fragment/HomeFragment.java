@@ -23,14 +23,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.creativecart_app.activity.MapActivity;
 import com.example.creativecart_app.adapters.AdapterAds;
 import com.example.creativecart_app.adapters.AdapterCategory;
-import com.example.creativecart_app.activity.LocationPickerActivity;
 import com.example.creativecart_app.models.ModelAds;
 import com.example.creativecart_app.models.ModelCategory;
 import com.example.creativecart_app.LoginOptionActivity.RvListenerCategory;
 import com.example.creativecart_app.LoginOptionActivity.Utils;
-import com.example.creativecart_app.R;
 import com.example.creativecart_app.databinding.FragmentHomeBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -126,7 +125,7 @@ public class HomeFragment extends Fragment  {
           binding.locationCv.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View view) {
-                  Intent intent=new Intent(mContext, LocationPickerActivity.class);
+                  Intent intent=new Intent(mContext, MapActivity.class);
                   locationPickerActivityResult.launch(intent);
               }
           });
@@ -205,11 +204,11 @@ public class HomeFragment extends Fragment  {
     }
 
     private void loadAds(String category){
-        Log.d(TAG, "loadAds: Category "+category);
+        Log.d(TAG, "loadAds: CategoryFragment "+category);
 
         //init adsArrayList before starting adding data into it
         adsArrayList =new ArrayList<>();
-        //Firebase DB listener to load Ads base on Category and Distance
+        //Firebase DB listener to load Ads base on CategoryFragment and Distance
         DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Ads");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -228,7 +227,7 @@ public class HomeFragment extends Fragment  {
                     //filter
                     if (category.equals("All")){
 
-                        //Category all is selected, now check distance if is<= required e.g. 10km then show
+                        //CategoryFragment all is selected, now check distance if is<= required e.g. 10km then show
                         if (distance <= MAX_DISTANCE_TO_LOAD_ADS_KM){
                             //The distance is <= required e.g. 10km. Add to list
                             adsArrayList.add(modelAds);

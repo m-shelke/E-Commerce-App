@@ -30,19 +30,19 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".activity.AdsDetailsActivity"
+            android:name=".activity.ProductDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.AdsSellerProfileActivity"
+            android:name=".activity.SellerProfileActivity"
             android:exported="false" />
         <activity
             android:name=".activity.ProfileEditActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.LocationPickerActivity"
+            android:name=".activity.MapActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.AdCreateActivity"
+            android:name=".activity.LaunchProductActivity"
             android:exported="false" />
         <activity
             android:name=".activity.DeleteAccountActivity"
@@ -76,7 +76,10 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+<!--                <categoryFragment android:name="android.intent.categoryFragment.LAUNCHER" />-->
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+
             </intent-filter>
 
         </activity>

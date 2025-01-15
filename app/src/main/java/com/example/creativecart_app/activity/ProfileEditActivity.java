@@ -198,7 +198,7 @@ public class ProfileEditActivity extends AppCompatActivity {
         //if user type is phone then allow to update email otherwise (in case of Google or Email) allow to update phone
         if (myUserType.equalsIgnoreCase("phone")){          //if User Type is phone allow to update Email not phone
             hashMap.put("email",""+email);
-        } else if (myUserType.equalsIgnoreCase("Email") || myUserType.equalsIgnoreCase("Google")) {
+        } else if (myUserType.equalsIgnoreCase("email") || myUserType.equalsIgnoreCase("Google")) {
             hashMap.put("phoneCode",phoneCode);
             hashMap.put("phoneNumber",phoneNumber);
         }
@@ -251,7 +251,7 @@ public class ProfileEditActivity extends AppCompatActivity {
                 String phone= phoneCode+phoneNumber;
 
                 //check User Type, if Email/Google then don't allow user to edit/update email
-                if (myUserType.equalsIgnoreCase("Email")|| myUserType.equalsIgnoreCase("Google")){
+                if (myUserType.equalsIgnoreCase("email")|| myUserType.equalsIgnoreCase("Google")){
 
                     //User Type Email/Google, don't allow to edit
                     binding.emailTil.setEnabled(false);
@@ -284,7 +284,7 @@ public class ProfileEditActivity extends AppCompatActivity {
 
                     Glide.with(ProfileEditActivity.this)
                             .load(profileImageUrl)
-                            .placeholder(R.drawable.dog)
+                            .placeholder(R.drawable.baseline_circle_24)
                             .apply(requestOptions)
                             .listener(new RequestListener<Drawable>() {
                                 @Override

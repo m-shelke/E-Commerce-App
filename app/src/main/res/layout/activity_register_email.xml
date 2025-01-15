@@ -11,15 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="55dp">
 
-       <!-- ImageView: click to go back-->
-           <ImageButton
-               android:id="@+id/toolbarBackBtn"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:src="@drawable/baseline_arrow_back_ios_24"
-               android:background="@android:color/transparent"
-               android:padding="10dp"
-               android:layout_centerVertical="true"/>
+        <!-- ImageView: click to go back-->
+        <ImageButton
+            android:id="@+id/toolbarBackBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:padding="10dp"
+            android:src="@drawable/baseline_arrow_back_ios_24" />
 
         <!--TextView: Toolbar Title-->
         <TextView
@@ -27,16 +27,16 @@
             style="@style/TextAppearance.MaterialComponents.Body1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/toolbarBackBtn"
             android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/toolbarBackBtn"
             android:text="Register" />
 
         <!--View: To make Toolbar look separate from other UI -->
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/black"
-            android:layout_alignParentBottom="true"/>
+            android:layout_alignParentBottom="true"
+            android:background="@color/black" />
 
     </RelativeLayout>
 

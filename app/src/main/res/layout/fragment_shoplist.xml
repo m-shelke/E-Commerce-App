@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Fragment.MyAds_AdsFragment">
-
+    tools:context=".Fragment.CardShopListFragment">
 
     <!--MaterialCardView: click to pick and show the location to show ads nearby-->
     <com.google.android.material.card.MaterialCardView
@@ -17,6 +16,7 @@
 
         <EditText
             android:id="@+id/searchEt"
+            android:inputType="textPersonName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
@@ -35,5 +35,6 @@
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/row_ad"/>
+
 
 </RelativeLayout>

@@ -38,7 +38,7 @@ public class FilterAds extends Filter {
             ArrayList<ModelAds> filteredModels =new ArrayList<>();
             for (int i=0; i<filterList.size(); i++){
 
-                //Ads filter based on Brand,Category,Condition,Title. If any of this matches add it to the filteredModels list
+                //Ads filter based on Brand,CategoryFragment,Condition,Title. If any of this matches add it to the filteredModels list
                 if (filterList.get(i).getBrand().toUpperCase().contains(constraint) ||
                     filterList.get(i).getCategory().toUpperCase().contains(constraint) ||
                      filterList.get(i).getCondition().toUpperCase().contains(constraint) ||

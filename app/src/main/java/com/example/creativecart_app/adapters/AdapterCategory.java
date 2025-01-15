@@ -26,14 +26,14 @@ public class AdapterCategory extends RecyclerView.Adapter<AdapterCategory.Holder
     //Context of activity/fragment from where instance of AdapterCategory class is created
     private Context context;
 
-    //Category ArrayList. The list of the categories
+    //CategoryFragment ArrayList. The list of the categories
     private ArrayList<ModelCategory> categoryArrayList;
 
-    //RvListenerCategory instances to handle the Category click event in it's calling class instead of this class
+    //RvListenerCategory instances to handle the CategoryFragment click event in it's calling class instead of this class
     private RvListenerCategory rvListenerCategory;
 
     /*Constructor @param: Context the context of the activity/fragment from where instances of AdapterCategory class is created
-    * @param:categoryArrayList.Category ArrayList. The list of the categories
+    * @param:categoryArrayList.CategoryFragment ArrayList. The list of the categories
     * @param: RvListenerCategory: Instance of the RvListenerCategory interface
      */
     public AdapterCategory(Context context, ArrayList<ModelCategory> categoryArrayList, RvListenerCategory rvListenerCategory) {

@@ -284,6 +284,7 @@
             android:foreground="?selectableItemBackground"
             app:icon="@drawable/baseline_directions_run_24"/>
 
+<!--    Button for referring the app, to others-->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/refferedBtn"
             android:layout_width="match_parent"

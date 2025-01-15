@@ -22,7 +22,6 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
-import com.example.creativecart_app.activity.AdCreateActivity;
 import com.example.creativecart_app.activity.ChangePasswordActivity;
 import com.example.creativecart_app.activity.DeleteAccountActivity;
 import com.example.creativecart_app.LoginOptionActivity.Utils;
@@ -61,7 +60,7 @@ public class AccountsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding=FragmentAccountsBinding.inflate(LayoutInflater.from(mContext ),container,false);
+        binding=FragmentAccountsBinding.inflate(LayoutInflater.from(mContext),container,false);
         return binding.getRoot();
     }
 
@@ -110,13 +109,14 @@ public class AccountsFragment extends Fragment {
             }
         });
 
+//        handling referredBtn button event
         binding.refferedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
                 intent.putExtra(Intent.EXTRA_TEXT,"Reffred this App for Shop,com.example.creativecart_app");
-                startActivity(Intent.createChooser(intent,"Thank You For Efforts.."));
+                startActivity(Intent.createChooser(intent,"Thank You.."));
             }
         });
 
@@ -201,7 +201,7 @@ public class AccountsFragment extends Fragment {
 
                             Glide.with(mContext)
                                     .load(profileImageUrl)
-                                    .placeholder(R.drawable.dog)
+                                    .placeholder(R.drawable.baseline_person_24)
                                     .apply(requestOptions)
                                     .listener(new RequestListener<Drawable>() {
 
@@ -240,7 +240,7 @@ public class AccountsFragment extends Fragment {
         //send account/email verification instruction to the registered email
         firebaseAuth.getCurrentUser().sendEmailVerification()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    //instructoion send, check email, sometimes it goes to the spam folder so if not into inbox please check the spam folder
+                    //instruction send, check email, sometimes it goes to the spam folder so if not into inbox please check the spam folder
                     @Override
                     public void onSuccess(Void unused) {
                         Log.d(TAG, "onSuccess: ");

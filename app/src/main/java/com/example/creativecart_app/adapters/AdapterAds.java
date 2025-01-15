@@ -26,7 +26,7 @@ import com.bumptech.glide.request.target.Target;
 import com.example.creativecart_app.LoginOptionActivity.FilterAds;
 import com.example.creativecart_app.LoginOptionActivity.Utils;
 import com.example.creativecart_app.R;
-import com.example.creativecart_app.activity.AdsDetailsActivity;
+import com.example.creativecart_app.activity.ProductDetailsActivity;
 import com.example.creativecart_app.databinding.RowAdBinding;
 import com.example.creativecart_app.models.ModelAds;
 import com.google.android.material.imageview.ShapeableImageView;
@@ -112,12 +112,12 @@ public class AdapterAds extends  RecyclerView.Adapter<AdapterAds.HolderAds> impl
         holder.priceTv.setText(price);
         holder.dateTv.setText(formatedDate);
 
-        //Handle itemView.setOnClickListener click, Open the AdsDetailsActivity, also pass the id of the Ads to intent to load the details
+        //Handle itemView.setOnClickListener click, Open the ProductDetailsActivity, also pass the id of the Ads to intent to load the details
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(context, AdsDetailsActivity.class);
+                Intent intent = new Intent(context, ProductDetailsActivity.class);
                 intent.putExtra("adsId",modelAds.getId());
                 context.startActivity(intent);
             }

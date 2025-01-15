@@ -26,7 +26,7 @@ import android.widget.PopupMenu;
 import com.example.creativecart_app.LoginOptionActivity.Utils;
 import com.example.creativecart_app.R;
 import com.example.creativecart_app.adapters.AdapterImagePicked;
-import com.example.creativecart_app.databinding.ActivityAdCreateBinding;
+import com.example.creativecart_app.databinding.ActivityLaunchProductBinding;
 import com.example.creativecart_app.models.ModelImagePicked;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -46,10 +46,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AdCreateActivity extends AppCompatActivity {
+public class LaunchProductActivity extends AppCompatActivity {
 
     //View Binding
-    private ActivityAdCreateBinding binding;
+    private ActivityLaunchProductBinding binding;
 
     //init/setup progressDialog to show, while adding/updating Ads
     private ProgressDialog progressDialog;
@@ -70,8 +70,8 @@ public class AdCreateActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //init View Binding, activity_ad_create.xml=ActivityAdCreateBinding
-        binding = ActivityAdCreateBinding.inflate(getLayoutInflater());
+        //init View Binding, activity_launch_product.xml=ActivityAdCreateBinding
+        binding = ActivityLaunchProductBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         //init/setup progressDialog to show, while adding/updating Ads
@@ -82,7 +82,7 @@ public class AdCreateActivity extends AppCompatActivity {
         //Firebase Auth for Auth related task
         firebaseAuth = FirebaseAuth.getInstance();
 
-        //Setup and set the categories adapter to the Category Input Filed i.e categoryAct
+        //Setup and set the categories adapter to the CategoryFragment Input Filed i.e categoryAct
         ArrayAdapter<String> adapterCategories = new ArrayAdapter<>(this, R.layout.row_category_act, Utils.categories);
         binding.categoryAct.setAdapter(adapterCategories);
 
@@ -133,11 +133,11 @@ public class AdCreateActivity extends AppCompatActivity {
             }
         });
 
-        //Handled locationAct click, launch LocationPickerActivity to pick location from map
+        //Handled locationAct click, launch MapActivity to pick location from map
         binding.locationAct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(AdCreateActivity.this, LocationPickerActivity.class);
+                Intent intent=new Intent(LaunchProductActivity.this, MapActivity.class);
                 locationPickerActivityResultLauncher.launch(intent);
             }
         });
@@ -159,7 +159,7 @@ public class AdCreateActivity extends AppCompatActivity {
 
                     Log.d(TAG, "onActivityResult: ");
                     
-                    //get result of location pick from LocationPickerActivity
+                    //get result of location pick from MapActivity
                     if (result.getResultCode()==Activity.RESULT_OK){
                         
                          Intent data=result.getData();
@@ -178,7 +178,7 @@ public class AdCreateActivity extends AppCompatActivity {
                          
                     }else {
                         Log.d(TAG, "onActivityResult: Cancelled..");
-                        Utils.toast(AdCreateActivity.this,"Cancelled..");
+                        Utils.toast(LaunchProductActivity.this,"Cancelled..");
                     }
                 }
             }
@@ -258,7 +258,7 @@ public class AdCreateActivity extends AppCompatActivity {
 
                     }else {
                         //Storage Permission is not granted, we can't launch Gallery to pick up image
-                        Utils.toast(AdCreateActivity.this,"Storage Permission Is Denied..");
+                        Utils.toast(LaunchProductActivity.this,"Storage Permission Is Denied..");
                     }
 
                 }
@@ -285,7 +285,7 @@ public class AdCreateActivity extends AppCompatActivity {
                         pickImageCamera();
                     }else {
                         //All permission Camera,Storage are denied, we cann't launch Camera to Capture images
-                        Utils.toast(AdCreateActivity.this,"Camera or Gallery or both permission denied..");
+                        Utils.toast(LaunchProductActivity.this,"Camera or Gallery or both permission denied..");
                     }
                 }
             }
@@ -404,7 +404,7 @@ public class AdCreateActivity extends AppCompatActivity {
             binding.brandEt.requestFocus();
         } else if (category.isEmpty()) {
             //no category entered in categoryEt, show error in categoryEt and focus
-            binding.categoryAct.setError("Choose Category");
+            binding.categoryAct.setError("Choose CategoryFragment");
             binding.categoryAct.requestFocus();
         } else if (condition.isEmpty()) {
             //no condition entered in conditionAct, show error in conditionAct and focus
@@ -471,7 +471,7 @@ public class AdCreateActivity extends AppCompatActivity {
                     public void onFailure(@NonNull Exception e) {//////////////////////////////////////
                         //Ads data update failed
                         Log.e(TAG, "onFailure: ",e);
-                        Utils.toast(AdCreateActivity.this,"Failed To Update Ad Due To "+e.getMessage());
+                        Utils.toast(LaunchProductActivity.this,"Failed To Update Ad Due To "+e.getMessage());
                     }
                 });
 
@@ -523,7 +523,7 @@ public class AdCreateActivity extends AppCompatActivity {
                     public void onFailure(@NonNull Exception e) {
                         Log.e(TAG, "onFailure: ",e);
                         progressDialog.dismiss();
-                        Utils.toast(AdCreateActivity.this,"Failed to published Ads due to "+e.getMessage());
+                        Utils.toast(LaunchProductActivity.this,"Failed to published Ads due to "+e.getMessage());
                     }
                 });
     }

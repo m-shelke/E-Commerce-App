@@ -16,9 +16,8 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
-import com.example.creativecart_app.LoginOptionActivity.Utils;
 import com.example.creativecart_app.adapters.AdapterAds;
-import com.example.creativecart_app.databinding.ActivityAdsSellerProfileBinding;
+import com.example.creativecart_app.databinding.ActivitySellerProfileBinding;
 import com.example.creativecart_app.models.ModelAds;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,10 +27,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class AdsSellerProfileActivity extends AppCompatActivity {
+public class SellerProfileActivity extends AppCompatActivity {
 
     //View Binding
-    private ActivityAdsSellerProfileBinding binding;
+    private ActivitySellerProfileBinding binding;
 
     //TAG for logs in logcat
     private String TAG="ADS_SELLER_PROFILE";
@@ -41,8 +40,8 @@ public class AdsSellerProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {super.onCreate(savedInstanceState);
-        //init View Binding activity_ads_seller_profile.xml=ActivityAdsSellerProfileBinding
-        binding=ActivityAdsSellerProfileBinding.inflate(getLayoutInflater());
+        //init View Binding activity_seller_profile.xml=ActivityAdsSellerProfileBinding
+        binding=ActivitySellerProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         //get the seller id of the Ads (as we passed in AdsDetailActivity class while starting this Activity)
@@ -87,7 +86,7 @@ public class AdsSellerProfileActivity extends AppCompatActivity {
 
                             RequestOptions requestOptions = new RequestOptions().diskCacheStrategy(DiskCacheStrategy.AUTOMATIC);
 
-                            Glide.with(AdsSellerProfileActivity.this)
+                            Glide.with(SellerProfileActivity.this)
                                     .load(profileImageUrl)
                                     .apply(requestOptions)
                                     .listener(new RequestListener<Drawable>() {
@@ -147,7 +146,7 @@ public class AdsSellerProfileActivity extends AppCompatActivity {
                         }
 
                         //init/setup AdapterAds and set to RecyclerView i.e adsRV
-                        AdapterAds adapterAds=new AdapterAds(AdsSellerProfileActivity.this,adsArrayList);
+                        AdapterAds adapterAds=new AdapterAds(SellerProfileActivity.this,adsArrayList);
                         binding.adsRv.setAdapter(adapterAds);
 
                         //set Ads count

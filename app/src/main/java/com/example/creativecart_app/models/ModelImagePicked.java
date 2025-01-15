@@ -8,7 +8,7 @@ public class ModelImagePicked {
     String id="";
     Uri imageUri=null;
     String getImageUrl=null;
-    boolean fromInternet=false; //this model class will be used to show image (picked/taken from Gallery/Camera-false or from Firebase-true) in AdCreateActivity
+    boolean fromInternet=false; //this model class will be used to show image (picked/taken from Gallery/Camera-false or from Firebase-true) in LaunchProductActivity
 
     //Empty Constructor required for Firebase DB
     public ModelImagePicked() {

@@ -23,7 +23,8 @@ import android.widget.Toast;
 
 import com.example.creativecart_app.LoginOptionActivity.Utils;
 import com.example.creativecart_app.R;
-import com.example.creativecart_app.databinding.ActivityLocationPickerBinding;
+import com.example.creativecart_app.databinding.ActivityMainBinding;
+import com.example.creativecart_app.databinding.ActivityMapBinding;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -47,10 +48,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class LocationPickerActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     //View Binding
-    private ActivityLocationPickerBinding binding;
+    private ActivityMapBinding binding;
 
     //TAG for logs in LogCat
     private static final String TAG="LOCATION_PICKER_TAG";
@@ -71,8 +72,8 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //activity_location_picker.xml=ActivityLocationPickerBinding
-        binding=ActivityLocationPickerBinding.inflate(getLayoutInflater());
+        //activity_map.xml=ActivityLocationPickerBinding
+        binding=ActivityMapBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         //Hide the doneLl for now. We will show, when user select or search location
@@ -189,7 +190,7 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
 //                    requestLocationPermission.launch(Manifest.permission.ACCESS_FINE_LOCATION);
 //                }else {
 //                    //GPS/Location not enabled
-//                    Utils.toast(LocationPickerActivity.this,"Location is not on..! Turn it on to show current location ");
+//                    Utils.toast(MapActivity.this,"Location is not on..! Turn it on to show current location ");
 //                }
 //            }
 //        });
@@ -255,7 +256,7 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
                         pickCurrentPlace();
                     }else {
                         //User denied permission, so we can't pick location
-                        Utils.toast(LocationPickerActivity.this,"Permission Denied...");
+                        Utils.toast(MapActivity.this,"Permission Denied...");
                     }
                 }
             }
@@ -412,7 +413,7 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,DEFAULT_ZOOM));
 
             //Show the doneLl, so user can go back (with selected location) to the activity/fragment class that is requesting location
-            binding.doneLl .setVisibility(View.VISIBLE);
+            binding.doneLl.setVisibility(View.VISIBLE);
             //set selected location complete address
             binding.selectedPlaceTv.setText(address);
 

@@ -13,9 +13,9 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.creativecart_app.Fragment.AccountsFragment;
-import com.example.creativecart_app.Fragment.ChatsFragment;
+import com.example.creativecart_app.Fragment.CardFragment;
+import com.example.creativecart_app.Fragment.CategoryFragment;
 import com.example.creativecart_app.Fragment.HomeFragment;
-import com.example.creativecart_app.Fragment.MyAdsFragment;
 import com.example.creativecart_app.R;
 import com.example.creativecart_app.LoginOptionActivity.Utils;
 import com.example.creativecart_app.databinding.ActivityMainBinding;
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                else if (itemId==R.id.menu_my_ads) {
-                    //myAds item clicked, show MyAdsFragment
+                    //myAds item clicked, show CardFragment
 
                     if (firebaseAuth.getCurrentUser()==null){
                         Utils.toast(MainActivity.this,"Login Required...");
@@ -121,13 +121,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Handle sellFab click, start AdCreateActivity to add create a new add
+        //Handle sellFab click, start LaunchProductActivity to add create a new add
         binding.sellFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 //Edit clicked, start AdsCreateActivity with Ads Id and isEditMode as true
-                Intent intent=new Intent(MainActivity.this, AdCreateActivity.class);
+                Intent intent=new Intent(MainActivity.this, LaunchProductActivity.class);
                 intent.putExtra("isEditMode",false);
                 startActivity(intent);
             }
@@ -156,9 +156,9 @@ public class MainActivity extends AppCompatActivity {
     private void showChatsFragment(){
         //change toolbar textview text/title to Chats
        // binding.toolbarTitleTv.setText("Chats");
-        ChatsFragment chatsFragment=new ChatsFragment();
+        CategoryFragment categoryFragment =new CategoryFragment();
         FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(binding.fragmentsFl.getId(),chatsFragment,"ChatsFragment");
+        fragmentTransaction.replace(binding.fragmentsFl.getId(), categoryFragment,"CategoryFragment");
         fragmentTransaction.commit();
 
     }
@@ -167,9 +167,9 @@ public class MainActivity extends AppCompatActivity {
      //   binding.toolbarTitleTv.setText("MyAds");
 
         //show fragment
-        MyAdsFragment myAdsFragment=new MyAdsFragment();
+        CardFragment cardFragment =new CardFragment();
         FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(binding.fragmentsFl.getId(),myAdsFragment,"MyAdsFragment");
+        fragmentTransaction.replace(binding.fragmentsFl.getId(), cardFragment,"CardFragment");
         fragmentTransaction.commit();
 
     }

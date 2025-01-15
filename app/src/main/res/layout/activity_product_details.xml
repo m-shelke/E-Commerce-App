@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.AdsDetailsActivity">
+    tools:context=".activity.ProductDetailsActivity">
 
     <RelativeLayout
         android:id="@+id/toolbarRL"
@@ -137,7 +137,7 @@
                 android:text="dd/mm/yyyy" />
 
 
-            <!--TextView: show Label Category-->
+            <!--TextView: show Label CategoryFragment-->
             <TextView
                 android:id="@+id/categoryLabelTv"
                 style="@style/TextAppearance.MaterialComponents.Headline6"
@@ -148,7 +148,7 @@
                 android:text="Category" />
 
 
-            <!--TextView: show the Ads category-->
+            <!--TextView: show the Ads categoryFragment-->
             <TextView
                 android:id="@+id/categoryTv"
                 style="@style/TextAppearance.MaterialComponents.Body2"

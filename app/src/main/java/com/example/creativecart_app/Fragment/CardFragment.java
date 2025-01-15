@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
@@ -16,22 +15,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.creativecart_app.databinding.FragmentMyAdsBinding;
+import com.example.creativecart_app.databinding.FragmentCardBinding;
 import com.google.android.material.tabs.TabLayout;
 
-public class MyAdsFragment extends Fragment {
+public class CardFragment extends Fragment {
 
     //TAG to show logs in Logcat
     private static final String TAG="MY_ADS_TAG";
 
     //View Binding
-    private FragmentMyAdsBinding binding;
+    private FragmentCardBinding binding;
 
     //Context of this fragment class
     private Context mContext;
     private MyTabsViewPagerAdapter myTabsViewPagerAdapter;
 
-    public MyAdsFragment() {
+    public CardFragment() {
         // Required empty public constructor
     }
 
@@ -45,7 +44,7 @@ public class MyAdsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding=FragmentMyAdsBinding.inflate(inflater,container,false);
+        binding=FragmentCardBinding.inflate(inflater,container,false);
         return binding.getRoot();
     }
 
@@ -99,11 +98,11 @@ public class MyAdsFragment extends Fragment {
         @NonNull
         @Override
         public Fragment createFragment(int position) {
-            //Tab position start from 0. If 0 set/show MyAds_AdsFragment otherwise it is definitely 1 so show MyAds_FavFragment
+            //Tab position start from 0. If 0 set/show CartWishListFragment otherwise it is definitely 1 so show CardShopListFragment
             if (position==0) {
-                return new MyAds_AdsFragment();
+                return new CartWishListFragment();
             }else {
-                return new MyAds_FavFragment();
+                return new CardShopListFragment();
             }
         }
 

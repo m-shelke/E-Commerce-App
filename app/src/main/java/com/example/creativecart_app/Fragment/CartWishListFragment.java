@@ -15,8 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.creativecart_app.adapters.AdapterAds;
+import com.example.creativecart_app.databinding.FragmentCardWishlistBinding;
 import com.example.creativecart_app.models.ModelAds;
-import com.example.creativecart_app.databinding.FragmentMyAdsAdsBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,10 +26,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class MyAds_AdsFragment extends Fragment {
+public class CartWishListFragment extends Fragment {
 
     //View Binding
-    private FragmentMyAdsAdsBinding binding;
+    private @NonNull FragmentCardWishlistBinding binding;
 
     //Context for this fragment class
     private Context mContext;
@@ -46,7 +46,7 @@ public class MyAds_AdsFragment extends Fragment {
     //Adapter class instance to set to RecyclerView to show Ads list
     private AdapterAds adapterAds;
 
-    public MyAds_AdsFragment() {
+    public CartWishListFragment() {
         // Required empty public constructor
     }
 
@@ -59,8 +59,8 @@ public class MyAds_AdsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout (fragment_my_ads__ads.xml) for this fragment
-        binding=FragmentMyAdsAdsBinding.inflate(inflater,container,false);
+        // Inflate the layout (fragment_card_wishlist.xml) for this fragment
+        binding= FragmentCardWishlistBinding.inflate(inflater,container,false);
         return binding.getRoot();
     }
 

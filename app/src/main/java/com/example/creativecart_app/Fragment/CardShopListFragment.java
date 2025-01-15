@@ -16,8 +16,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.creativecart_app.adapters.AdapterAds;
+import com.example.creativecart_app.databinding.FragmentShoplistBinding;
 import com.example.creativecart_app.models.ModelAds;
-import com.example.creativecart_app.databinding.FragmentMyAdsFavBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,9 +27,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class MyAds_FavFragment extends Fragment {
+public class CardShopListFragment extends Fragment {
     //View Binding
-    private FragmentMyAdsFavBinding binding;
+    private @NonNull FragmentShoplistBinding binding;
 
     //TAG to show logs in Logcat
     private static final String TAG="FAV_TAG";
@@ -45,7 +45,7 @@ public class MyAds_FavFragment extends Fragment {
 
     //Adapter class instance to set to RecyclerView to show Ads list
     private AdapterAds adapterAds;
-    public MyAds_FavFragment() {
+    public CardShopListFragment() {
         // Required empty public constructor
     }  
 
@@ -59,7 +59,7 @@ public class MyAds_FavFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         // Inflate/bind the layout for this fragment
-        binding = FragmentMyAdsFavBinding.inflate(inflater,container,false);
+        binding = FragmentShoplistBinding.inflate(inflater,container,false);
         return binding.getRoot();
     }
 

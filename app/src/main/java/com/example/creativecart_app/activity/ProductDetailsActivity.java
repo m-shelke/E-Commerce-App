@@ -24,7 +24,7 @@ import com.bumptech.glide.request.target.Target;
 import com.example.creativecart_app.LoginOptionActivity.Utils;
 import com.example.creativecart_app.R;
 import com.example.creativecart_app.adapters.AdapterImageSlider;
-import com.example.creativecart_app.databinding.ActivityAdsDetailsBinding;
+import com.example.creativecart_app.databinding.ActivityProductDetailsBinding;
 import com.example.creativecart_app.models.ModelAds;
 import com.example.creativecart_app.models.ModelImageSlider;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -40,10 +40,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class AdsDetailsActivity extends AppCompatActivity {
+public class ProductDetailsActivity extends AppCompatActivity {
 
     //View binding
-    private ActivityAdsDetailsBinding binding;
+    private ActivityProductDetailsBinding binding;
 
     //TAG for logs in LogCat
     private static final String TAG = "ADS_DETAILS_TAG";
@@ -70,8 +70,8 @@ public class AdsDetailsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {super.onCreate(savedInstanceState);
-        //init View Binding ActivityAdsDetailsBinding = activity_ads_details.xml
-        binding = ActivityAdsDetailsBinding.inflate(getLayoutInflater());
+        //init View Binding ActivityAdsDetailsBinding = activity_product_details.xml
+        binding = ActivityProductDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         //Handle some UI View in start. We will show the Edit, Delete options if the user is Ads Owner. We will show call, chat , SMS options if users is not Ads owner
@@ -111,7 +111,7 @@ public class AdsDetailsActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 //Alert dialog to confirm if the user really wants to delete the Ads
-                MaterialAlertDialogBuilder materialAlertDialogBuilder=new MaterialAlertDialogBuilder(AdsDetailsActivity.this);
+                MaterialAlertDialogBuilder materialAlertDialogBuilder=new MaterialAlertDialogBuilder(ProductDetailsActivity.this);
                 materialAlertDialogBuilder.setTitle("Delete Product")
                         .setMessage("Are You Sure You Want To Delete This Product..!!")
                         .setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
@@ -147,10 +147,10 @@ public class AdsDetailsActivity extends AppCompatActivity {
 
                 if (favorite){
                     //This Ad is in favorites of the current user, remove from favorites
-                    Utils.removeFromFavorite(AdsDetailsActivity.this,adsId);
+                    Utils.removeFromFavorite(ProductDetailsActivity.this,adsId);
                 }else {
                     //this Ad is not in favorites of current user, add to favorites
-                    Utils.addToFavorite(AdsDetailsActivity.this,adsId);
+                    Utils.addToFavorite(ProductDetailsActivity.this,adsId);
                 }
             }
         });
@@ -159,7 +159,7 @@ public class AdsDetailsActivity extends AppCompatActivity {
         binding.sellerProfileCv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(AdsDetailsActivity.this, AdsSellerProfileActivity.class);
+                Intent intent=new Intent(ProductDetailsActivity.this, SellerProfileActivity.class);
                 intent.putExtra("sellerId",sellerId);
                 startActivity(intent);
             }
@@ -177,7 +177,7 @@ public class AdsDetailsActivity extends AppCompatActivity {
         binding.callBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utils.callIntent(AdsDetailsActivity.this,sellerPhone);
+                Utils.callIntent(ProductDetailsActivity.this,sellerPhone);
             }
         });
 
@@ -185,7 +185,7 @@ public class AdsDetailsActivity extends AppCompatActivity {
         binding.smsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Utils.smsIntent(AdsDetailsActivity.this,sellerPhone);
+               Utils.smsIntent(ProductDetailsActivity.this,sellerPhone);
             }
         });
 
@@ -193,7 +193,7 @@ public class AdsDetailsActivity extends AppCompatActivity {
         binding.mapBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utils.mapIntent(AdsDetailsActivity.this,adsLatitude,adsLongitude);
+                Utils.mapIntent(ProductDetailsActivity.this,adsLatitude,adsLongitude);
             }
         });
     }
@@ -219,7 +219,7 @@ public class AdsDetailsActivity extends AppCompatActivity {
                 if (itemId==0){
 
                     //Edit clicked, start AdsCreateActivity with Ads Id and isEditMode as true
-                    Intent intent=new Intent(AdsDetailsActivity.this, AdCreateActivity.class);
+                    Intent intent=new Intent(ProductDetailsActivity.this, LaunchProductActivity.class);
                     intent.putExtra("isEditMode",true);
                     intent.putExtra("adsId",adsId);
                     startActivity(intent);
@@ -265,7 +265,7 @@ public class AdsDetailsActivity extends AppCompatActivity {
                                     public void onFailure(@NonNull Exception e) {
                                         //Failed
                                         Log.e(TAG, "onFailure: ",e);
-                                        Utils.toast(AdsDetailsActivity.this,"Failed To Mark As Sold Due To "+e.getMessage());
+                                        Utils.toast(ProductDetailsActivity.this,"Failed To Mark As Sold Due To "+e.getMessage());
                                     }
                                 });
                     }
@@ -391,7 +391,7 @@ public class AdsDetailsActivity extends AppCompatActivity {
                             RequestOptions requestOptions = new RequestOptions().diskCacheStrategy(DiskCacheStrategy.AUTOMATIC);
 
 
-                            Glide.with(AdsDetailsActivity.this)
+                            Glide.with(ProductDetailsActivity.this)
                                     .load(profileImageUrl)
                                     .apply(requestOptions)
                                     .listener(new RequestListener<Drawable>() {
@@ -411,7 +411,7 @@ public class AdsDetailsActivity extends AppCompatActivity {
 
 
 //                            Glide
-//                                    .with(AdsDetailsActivity.this).load(profileImageUrl)
+//                                    .with(ProductDetailsActivity.this).load(profileImageUrl)
 //                                    .placeholder(R.drawable.baseline_downloading_24)
 //                                    .into(binding.sellerProfileIv);
 
@@ -490,7 +490,7 @@ public class AdsDetailsActivity extends AppCompatActivity {
                         }
 
                         //setup adapter and set to viewpager i.e imageSlider
-                        AdapterImageSlider adapterImageSlider=new AdapterImageSlider(AdsDetailsActivity.this,imageSliderArrayList);
+                        AdapterImageSlider adapterImageSlider=new AdapterImageSlider(ProductDetailsActivity.this,imageSliderArrayList);
                         binding.imageSliderVp.setAdapter(adapterImageSlider);
 
                     }
@@ -515,7 +515,7 @@ public class AdsDetailsActivity extends AppCompatActivity {
                     public void onSuccess(Void unused) {
                         //Success
                         Log.d(TAG, "onSuccess: ");
-                        Utils.toast(AdsDetailsActivity.this,"Deleted");
+                        Utils.toast(ProductDetailsActivity.this,"Deleted");
 
                         //finished activity and go back
                         finish();
@@ -526,7 +526,7 @@ public class AdsDetailsActivity extends AppCompatActivity {
                     public void onFailure(@NonNull Exception e) {
                         //failure
                         Log.d(TAG, "onFailure: ");
-                        Utils.toast(AdsDetailsActivity.this,"Failed To Delete Due To "+e.getMessage());
+                        Utils.toast(ProductDetailsActivity.this,"Failed To Delete Due To "+e.getMessage());
                     }
                 });
     }
